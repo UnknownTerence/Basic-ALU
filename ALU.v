@@ -4,7 +4,7 @@ module ALU #(
 	input signed [data_width - 1:0] a, // 8 bit input A
 	input signed [data_width - 1:0] b, // 8 bit input B
 	input [2:0] opcode, // 3 bit opcode, upto 8 operations
-	output [data_width - 1:0] result, // final result
+	output signed [data_width - 1:0] result, // final result
 	output carry, // if the value overflows
 	output zero, // if two inputs are equal
 	output negative // if the result is negative
@@ -19,7 +19,7 @@ module ALU #(
 	localparam OP_XNOR = 3'b110;
 	localparam OP_NAND = 3'b111;
 
-	reg [data_width:0] full_result; // larger to allow for the carry bit, reg type to allow use in always block
+	reg signed [data_width:0] full_result; // larger to allow for the carry bit, reg type to allow use in always block
 
 	always @(*) begin
 		case (opcode)
