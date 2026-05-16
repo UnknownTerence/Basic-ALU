@@ -2,7 +2,7 @@ module ALU_tb;
   
   reg signed [7:0] a, b; // input values
   reg [2:0] opcode; // opcode for operation to perform
-  wire [7:0] result; // results
+  wire signed [7:0] result; // results
   wire carry, zero, negative; // flags
   
   // instantiating the ALU
