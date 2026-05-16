@@ -1,12 +1,13 @@
 module ALU #(
 	parameter data_width = 8
 )(
-	input [data_width - 1:0] a, // 8 bit input A
-	input [data_width - 1:0] b, // 8 bit input B
+	input signed [data_width - 1:0] a, // 8 bit input A
+	input signed [data_width - 1:0] b, // 8 bit input B
 	input [2:0] opcode, // 3 bit opcode, upto 8 operations
 	output [data_width - 1:0] result, // final result
 	output carry, // if the value overflows
 	output zero // if two inputs are equal
+	output negative // if the result is negative
 );
 
 	localparam OP_ADD = 3'b000;
@@ -37,5 +38,6 @@ module ALU #(
 	assign result = full_result[data_width - 1:0]; // 8 bit result
 	assign carry = full_result[data_width]; // if there is overflow
 	assign zero = (result == 0); // 8 bit result is 0
+	assign negative = full_result[data_width-1]; // MSB if negative or positive
 
 endmodule
