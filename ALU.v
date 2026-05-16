@@ -6,7 +6,7 @@ module ALU #(
 	input [2:0] opcode, // 3 bit opcode, upto 8 operations
 	output [data_width - 1:0] result, // final result
 	output carry, // if the value overflows
-	output zero // if two inputs are equal
+	output zero, // if two inputs are equal
 	output negative // if the result is negative
 );
 
